@@ -1,12 +1,24 @@
 {
-  "printWidth": 100,
-  "singleQuote": true,
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "angular"
-      }
-    }
-  ]
+    "useTabs": false,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./src/styles.css",
+    "overrides": [
+        {
+            "files": "*.html",
+            "options": {
+                "parser": "angular"
+            }
+        },
+        {
+            "files": "*.{yml,yaml}",
+            "options": {
+                "tabWidth": 2,
+                "singleQuote": false
+            }
+        }
+    ]
 }
