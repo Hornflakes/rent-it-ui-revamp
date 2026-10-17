@@ -1,0 +1,79 @@
+<app-auth-layout heading="Creeaza cont">
+    <form class="flex flex-col" [formRoot]="registerForm">
+        <div class="flex flex-col gap-4">
+            <label class="group relative block">
+                <span class="sr-only">Nume utilizator</span>
+                <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    class="pointer-events-none absolute top-1/2 left-1.5 size-5 -translate-y-1/2 fill-[#6c757d] group-hover:fill-black"
+                >
+                    <path
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                    />
+                </svg>
+                <input
+                    [formField]="registerForm.username"
+                    type="text"
+                    autocomplete="username"
+                    placeholder="Nume utilizator"
+                    class="block h-10 w-full rounded border border-[#ced4da] bg-white px-8 py-1.5 text-base/normal transition-[border-color,box-shadow] duration-150 ease-in-out group-hover:not-focus:border-black placeholder:text-[#6c757d] focus:border-[#0d6efd] focus:ring-4 focus:ring-[#0d6efd]/25 focus:outline-none"
+                />
+            </label>
+
+            <label class="group relative block">
+                <span class="sr-only">Parola</span>
+                <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    class="pointer-events-none absolute top-1/2 left-1.5 size-5 -translate-y-1/2 fill-[#6c757d] group-hover:fill-black"
+                >
+                    <path
+                        d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+                    />
+                </svg>
+                <input
+                    [formField]="registerForm.password"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Parola"
+                    class="block h-10 w-full rounded border border-[#ced4da] bg-white px-8 py-1.5 text-base/normal transition-[border-color,box-shadow] duration-150 ease-in-out group-hover:not-focus:border-black placeholder:text-[#6c757d] focus:border-[#0d6efd] focus:ring-4 focus:ring-[#0d6efd]/25 focus:outline-none"
+                />
+            </label>
+
+            <label class="group relative block">
+                <span class="sr-only">Confirmare parola</span>
+                <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    class="pointer-events-none absolute top-1/2 left-1.5 size-5 -translate-y-1/2 fill-[#6c757d] group-hover:fill-black"
+                >
+                    <path
+                        d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+                    />
+                </svg>
+                <input
+                    [formField]="registerForm.repeatPassword"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Confirmare parola"
+                    class="block h-10 w-full rounded border border-[#ced4da] bg-white px-8 py-1.5 text-base/normal transition-[border-color,box-shadow] duration-150 ease-in-out group-hover:not-focus:border-black placeholder:text-[#6c757d] focus:border-[#0d6efd] focus:ring-4 focus:ring-[#0d6efd]/25 focus:outline-none"
+                />
+            </label>
+        </div>
+
+        <button
+            type="submit"
+            class="mt-10 cursor-pointer rounded border-2 border-[#0028e1] bg-[#0028e1] px-3 py-1.5 text-xl/normal text-white transition-colors duration-400 hover:bg-transparent hover:text-[#0028e1] focus-visible:ring-4 focus-visible:ring-[#0d6efd]/50 focus-visible:outline-none"
+        >
+            Creeaza cont
+        </button>
+    </form>
+
+    <a
+        routerLink="/login"
+        class="mt-2 self-center text-xl/normal text-[#0028e1] hover:text-[#f78b00]"
+    >
+        Ai cont? Logheaza-te!
+    </a>
+</app-auth-layout>

@@ -1,6 +1,8 @@
 // @ts-check
 import eslint from '@eslint/js';
 import angular from 'angular-eslint';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { importX } from 'eslint-plugin-import-x';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
@@ -13,8 +15,12 @@ export default defineConfig([
             tseslint.configs.recommended,
             tseslint.configs.stylistic,
             angular.configs.tsRecommended,
+            importX.flatConfigs.typescript,
         ],
         processor: angular.processInlineTemplates,
+        settings: {
+            'import-x/resolver-next': [createTypeScriptImportResolver()],
+        },
         rules: {
             '@angular-eslint/directive-selector': [
                 'error',
@@ -53,6 +59,12 @@ export default defineConfig([
                 'error',
                 { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
             ],
+
+            '@typescript-eslint/no-import-type-side-effects': 'error',
+
+            'import-x/no-cycle': 'error',
+
+            '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
         },
     },
     {
