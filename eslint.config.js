@@ -12,8 +12,8 @@ export default defineConfig([
         files: ['**/*.ts'],
         extends: [
             eslint.configs.recommended,
-            tseslint.configs.recommended,
-            tseslint.configs.stylistic,
+            tseslint.configs.recommendedTypeChecked,
+            tseslint.configs.stylisticTypeChecked,
             angular.configs.tsRecommended,
             importX.flatConfigs.typescript,
         ],
@@ -75,8 +75,6 @@ export default defineConfig([
                 'error',
                 { allowExpressions: true },
             ],
-
-            '@typescript-eslint/no-floating-promises': 'error',
         },
     },
     {
