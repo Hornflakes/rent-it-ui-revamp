@@ -3,7 +3,7 @@ import { computed, effect, Service, signal } from '@angular/core';
 const ACCESS_TOKEN_KEY = 'accessToken';
 
 @Service()
-export class AuthService {
+export class Session {
     readonly token = signal<string | null>(localStorage.getItem(ACCESS_TOKEN_KEY));
     readonly isAuth = computed(() => !!this.token());
 

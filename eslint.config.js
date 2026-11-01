@@ -18,6 +18,11 @@ export default defineConfig([
             importX.flatConfigs.typescript,
         ],
         processor: angular.processInlineTemplates,
+        languageOptions: {
+            parserOptions: {
+                projectService: true,
+            },
+        },
         settings: {
             'import-x/resolver-next': [createTypeScriptImportResolver()],
         },
@@ -65,6 +70,13 @@ export default defineConfig([
             'import-x/no-cycle': 'error',
 
             '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+
+            '@typescript-eslint/explicit-function-return-type': [
+                'error',
+                { allowExpressions: true },
+            ],
+
+            '@typescript-eslint/no-floating-promises': 'error',
         },
     },
     {

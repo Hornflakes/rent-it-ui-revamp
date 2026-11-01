@@ -1,5 +1,5 @@
 <app-auth-layout heading="Creeaza cont">
-    <form class="flex flex-col" [formRoot]="registerForm">
+    <form class="flex flex-col" [formRoot]="form">
         <div class="flex flex-col gap-4">
             <label class="group relative block">
                 <span class="sr-only">Nume utilizator</span>
@@ -13,7 +13,7 @@
                     />
                 </svg>
                 <input
-                    [formField]="registerForm.username"
+                    [formField]="form.username"
                     type="text"
                     autocomplete="username"
                     placeholder="Nume utilizator"
@@ -33,7 +33,7 @@
                     />
                 </svg>
                 <input
-                    [formField]="registerForm.password"
+                    [formField]="form.password"
                     type="password"
                     autocomplete="new-password"
                     placeholder="Parola"
@@ -53,7 +53,7 @@
                     />
                 </svg>
                 <input
-                    [formField]="registerForm.repeatPassword"
+                    [formField]="form.repeatPassword"
                     type="password"
                     autocomplete="new-password"
                     placeholder="Confirmare parola"
@@ -76,4 +76,53 @@
     >
         Ai cont? Logheaza-te!
     </a>
+
+    @if (submitted() && form().invalid()) {
+        @let usernameErrors = form.username().errors();
+        @let passwordErrors = form.password().errors();
+        @let usernameKind = usernameErrors[0]?.kind;
+        @let passwordKind = passwordErrors[0]?.kind;
+
+        <div
+            role="alert"
+            class="mt-4 mb-4 rounded border border-[#f5c2c7] bg-[#f8d7da] p-4 text-xl/normal text-[#842029]"
+        >
+            @if (usernameErrors.length && usernameKind !== 'required') {
+                <p>Username tre sa aibe:</p>
+                <ul class="list-disc pl-8">
+                    @for (error of usernameErrors; track $index) {
+                        <li>{{ error.message }}</li>
+                    }
+                </ul>
+            }
+
+            @if (passwordErrors.length && passwordKind !== 'required') {
+                <p>Parola tre sa aibe:</p>
+                <ul class="list-disc pl-8">
+                    @for (error of passwordErrors; track $index) {
+                        <li>{{ error.message }}</li>
+                    }
+                </ul>
+            }
+
+            @if (usernameKind === 'required' && passwordKind === 'required') {
+                <p>Baga numele si parola</p>
+            } @else {
+                @if (usernameKind === 'required') {
+                    <p>{{ usernameErrors[0].message }}</p>
+                }
+                @if (passwordKind === 'required') {
+                    <p>{{ passwordErrors[0].message }}</p>
+                }
+            }
+
+            @if (!passwordErrors.length) {
+                @for (error of form.repeatPassword().errors(); track $index) {
+                    <p>{{ error.message }}</p>
+                }
+            }
+        </div>
+    }
+
+    <app-error-dialog message="Contul exista deja" />
 </app-auth-layout>
